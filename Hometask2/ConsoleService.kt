@@ -70,4 +70,3 @@ class ConsoleService : ConsoleServiceInterface {
 }
 
 class WrongOperationTypeException(val operation: String) : Exception()
-

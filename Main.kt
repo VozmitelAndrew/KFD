@@ -4,3 +4,4 @@ fun main() {
     val application = ConsoleService()
     application.work()
 }
+
