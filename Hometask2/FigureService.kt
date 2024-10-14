@@ -3,30 +3,36 @@ package Hometask2
 interface FigureServiceInterface {
     fun addSquare(property: Double)
     fun addCircle(property: Double)
-    fun getPerimeter(): Double
-    fun getArea(): Double
+    fun getTotalPerimeter(): Double
+    fun getTotalArea(): Double
 }
 
-class FigureService : FigureServiceInterface {
-    private val figures: MutableList<Shape> = mutableListOf()
-
+object FigureService : FigureServiceInterface {
     override fun addSquare(property: Double) {
-        figures.add(Square(property))
+        shapes.add(Square(property))
     }
 
     override fun addCircle(property: Double) {
-        figures.add(Circle(property))
+        shapes.add(Circle(property))
     }
 
-    override fun getPerimeter(): Double {
-        return figures.sumOf {
-            it.getPerimeter()
+    override fun getTotalPerimeter(): Double {
+        return shapes.sumOf {
+            when (it) {
+                is Square -> 4 * it.side
+                is Circle -> 2 * Math.PI * it.radius
+            }
         }
     }
 
-    override fun getArea(): Double {
-        return figures.sumOf {
-            it.getCircumference()
+    override fun getTotalArea(): Double {
+        return shapes.sumOf {
+            when (it) {
+                is Square -> it.side * it.side
+                is Circle -> Math.PI * it.radius * it.radius
+            }
         }
     }
+
+    private val shapes: MutableList<Shape> = mutableListOf()
 }

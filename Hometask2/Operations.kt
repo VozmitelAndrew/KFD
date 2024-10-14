@@ -11,7 +11,7 @@ fun getOperation(input: String): Operation {
         "3" -> Operation.GET_PERIMETER
         "4" -> Operation.HELP
         "5" -> Operation.EXIT
-        else -> throw WrongOperationTypeException(input)
+        else -> throw WrongOperationTypeException()
     }
 }
 
