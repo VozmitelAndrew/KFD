@@ -64,7 +64,7 @@ class ThreadPool(threadCount: Int) : Executor {
 }
 
 
-// NOTE: почти се тесты нагенерил ГПТха, но задание я писал сам (по крайней мере на 90% :p)
+// NOTE: почти все тесты нагенерил ГПТха, но задание я писал сам (по крайней мере на 90% :p)
 fun main() {
     ThreadPoolTest().runAllTests()
 }
