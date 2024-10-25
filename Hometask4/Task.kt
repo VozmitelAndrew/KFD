@@ -17,6 +17,7 @@ fun <T : Any> createRandomInstance(klass: KClass<T>): T?  // Нужны неко
             .joinToString("")
     }
 
+    //наверняка можно было лучше сделать обработку наличия primaryConstructor, но мне было лень :D
     if(klass.primaryConstructor == null){
         return null
     }
@@ -28,7 +29,8 @@ fun <T : Any> createRandomInstance(klass: KClass<T>): T?  // Нужны неко
     klass.primaryConstructor!!.parameters.forEach { i ->
         constructorArray[i.index] =
         (
-            if (i.type.isMarkedNullable && Random.nextInt(0, 5) == 1) null
+            //с шансом 20% отмечаем type? как null XD
+            if (i.type.isMarkedNullable && Random.nextInt(0, 5) == 0) null
             else when (i.type.classifier) {
                 Boolean::class -> Random.nextBoolean()
                 Int::class -> Random.nextInt(Int.MIN_VALUE, Int.MAX_VALUE)
