@@ -17,6 +17,7 @@ fun <T : Any> createRandomInstance(klass: KClass<T>): T?  // Нужны неко
             .joinToString("")
     }
 
+    
     //наверняка можно было лучше сделать обработку наличия primaryConstructor, но мне было лень :D
     if(klass.primaryConstructor == null){
         return null
@@ -46,7 +47,7 @@ fun <T : Any> createRandomInstance(klass: KClass<T>): T?  // Нужны неко
 }
 
 
-
+//-----------------------------ТЕСТЫ!!!----------------------------------------
 
 object MySingleton {
     var cogo_poslushat = "Шампур - Кровать цветов"
